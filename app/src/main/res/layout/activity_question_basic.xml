@@ -10,38 +10,92 @@
     <TextView
         android:id="@+id/textViewQuestion"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/question"
+        app:layout_constraintBottom_toTopOf="@+id/a1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/answer_a"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:id="@+id/a4"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
         android:layout_width="0dp"
-        android:layout_height="255dp"
+        android:layout_height="0dp"
         android:onClick="sendAnswer"
-        android:text="@string/answer_a"
-        app:layout_constraintBottom_toTopOf="@+id/answer_b"
+        android:text="@string/answer_d"
+        app:layout_constraintBottom_toTopOf="@+id/a5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuestion" />
+        app:layout_constraintTop_toBottomOf="@+id/a3"
+        app:rippleColor="#C61010" />
 
     <Button
-        android:id="@+id/answer_b"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:id="@+id/a1"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
         android:layout_width="0dp"
-        android:layout_height="256dp"
+        android:layout_height="0dp"
+        android:onClick="sendAnswer"
+        android:text="@string/answer_a"
+        app:layout_constraintBottom_toTopOf="@+id/a2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuestion"
+        app:rippleColor="#C61010" />
+
+    <Button
+        android:id="@+id/a2"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="sendAnswer"
+        android:text="@string/answer_d"
+        app:layout_constraintBottom_toTopOf="@+id/a3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/a1"
+        app:rippleColor="#C61010" />
+
+    <Button
+        android:id="@+id/a3"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="sendAnswer"
+        android:text="@string/answer_d"
+        app:layout_constraintBottom_toTopOf="@+id/a4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/a2"
+        app:rippleColor="#C61010" />
+
+    <Button
+        android:id="@+id/a5"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="sendAnswer"
+        android:text="@string/answer_d"
+        app:layout_constraintBottom_toTopOf="@+id/a6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/a4"
+        app:rippleColor="#C61010" />
+
+    <Button
+        android:id="@+id/a6"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
         android:onClick="sendAnswer"
         android:text="@string/answer_d"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer_a" />
+        app:layout_constraintTop_toBottomOf="@+id/a5"
+        app:rippleColor="#C61010" />
 </androidx.constraintlayout.widget.ConstraintLayout>
