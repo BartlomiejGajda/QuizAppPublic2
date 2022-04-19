@@ -32,7 +32,14 @@ public class QuestionBasicActivity extends AppCompatActivity {
         question.shuffle(); //mieszamy kolejność odpowiedzi
 
         TextView textView = findViewById(R.id.textViewQuestion);
-        Button button1 = findViewById(R.id.a1);
+
+
+        int a1 = 0;
+
+
+        Button button1 = findViewById(a1);
+
+
         Button button2 = findViewById(R.id.a2);
         Button button3 = findViewById(R.id.a3);
         Button button4 = findViewById(R.id.a4);
