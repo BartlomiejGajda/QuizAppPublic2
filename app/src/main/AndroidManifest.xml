@@ -10,12 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
         <activity
-            android:name=".QuestionBasicActivity"
+            android:name=".AfterQuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".DisplayMessageActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:name=".QuestionBasicActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
