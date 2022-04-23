@@ -46,18 +46,18 @@ public class QuestionBasicActivity extends AppCompatActivity {
         Button button5 = findViewById(R.id.a5);
         Button button6 = findViewById(R.id.a6);
 
-        for (int i = 6; i > question.getCounter();i--){
+        for (int i = 6; i > question.getAnswers().size();i--){
             int a = R.id.a1;
             Button button = findViewById(a+i-1);
             button.setVisibility(View.GONE);
         }
         try{
-        button1.setText(question.getAnswers()[0].getAnswerText());
-        button2.setText(question.getAnswers()[1].getAnswerText());
-        button3.setText(question.getAnswers()[2].getAnswerText());
-        button4.setText(question.getAnswers()[3].getAnswerText());
-        button5.setText(question.getAnswers()[4].getAnswerText());
-        button6.setText(question.getAnswers()[5].getAnswerText());}
+        button1.setText(question.getAnswers().get(0));
+        button2.setText(question.getAnswers().get(1));
+        button3.setText(question.getAnswers().get(2));
+        button4.setText(question.getAnswers().get(3));
+        button5.setText(question.getAnswers().get(4));
+        button6.setText(question.getAnswers().get(5));}
         catch (Exception ignored){}
 
         /*Button[] buttons = new Button[question.getCounter()];
@@ -104,7 +104,7 @@ public class QuestionBasicActivity extends AppCompatActivity {
         intent.putExtra("counter", counter+1);
         startActivity(intent);
 
-        if (question.getAnswers()[0].isCorrect()) {
+        if (question.getAnswers().get(0).equals(question.getAnswer_correct())) {
             b.setText("Correct");
             b.setBackgroundColor(0xFF00ff99);
         }
@@ -112,7 +112,7 @@ public class QuestionBasicActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void sendAnswer2(View view) throws InterruptedException {
         Button b = (Button)view;
-        if(question.getAnswers()[1].isCorrect()) {
+        if(question.getAnswers().get(1).equals(question.getAnswer_correct())) {
             b.setText("Correct");
             b.setBackgroundColor(0xFF00ff99);
         }
@@ -120,7 +120,7 @@ public class QuestionBasicActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void sendAnswer3(View view) throws InterruptedException {
         Button b = (Button)view;
-        if(question.getAnswers()[2].isCorrect()) {
+        if(question.getAnswers().get(2).equals(question.getAnswer_correct())) {
             b.setText("Correct");
             b.setBackgroundColor(0xFF00ff99);
         }
@@ -128,7 +128,7 @@ public class QuestionBasicActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void sendAnswer4(View view) throws InterruptedException {
         Button b = (Button)view;
-        if(question.getAnswers()[3].isCorrect()) {
+        if(question.getAnswers().get(3).equals(question.getAnswer_correct())) {
             b.setText("Correct");
             b.setBackgroundColor(0xFF00ff99);
         }
@@ -136,7 +136,7 @@ public class QuestionBasicActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void sendAnswer5(View view) throws InterruptedException {
         Button b = (Button)view;
-        if(question.getAnswers()[4].isCorrect()) {
+        if(question.getAnswers().get(4).equals(question.getAnswer_correct())) {
             b.setText("Correct");
             b.setBackgroundColor(0xFF00ff99);
         }
@@ -144,7 +144,7 @@ public class QuestionBasicActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void sendAnswer6(View view) throws InterruptedException {
         Button b = (Button)view;
-        if(question.getAnswers()[5].isCorrect()) {
+        if(question.getAnswers().get(5).equals(question.getAnswer_correct())) {
             b.setText("Correct");
             b.setBackgroundColor(0xFF00ff99);
         }

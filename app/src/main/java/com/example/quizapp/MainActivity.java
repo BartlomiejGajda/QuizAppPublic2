@@ -1,73 +1,70 @@
 package com.example.quizapp;
-import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-public class MainActivity extends AppCompatActivity {
-    //private FirebaseFirestore db;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class MainActivity extends ListActivity {
+    private FirebaseFirestore db;
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public String myJson;
 
-
-    /*public Answer a1 = new Answer("16",true);
-    public Answer a2 = new Answer("14",false);
-    public Answer a3 = new Answer("15",false);
-    public Answer a4 = new Answer("17",false);
-    public Answer b1 = new Answer("tak",true);
-    public Answer b2 = new Answer("nie",false);
-    public Answer b3 = new Answer("może",false);
-    public QuestionBasic question1 = new QuestionBasic("Ilość województw w Polsce wynosi:", new Answer[]{a1,a2,a3,a4});
-    public QuestionBasic question2 = new QuestionBasic("Tak?", new Answer[]{b1,b2,b3});*/
-    public QuestionBasic[] question;
-
-
+    public QuestionBasic question1 = new QuestionBasic("Ilość województw w Polsce wynosi:", Arrays.asList("15", "16", "13", "18"),"16");
+    public QuestionBasic question2 = new QuestionBasic("Tak?", Arrays.asList("tak","nie","moze"),"tak");
+    public QuestionBasic question3 = new QuestionBasic("Nie?", Arrays.asList("tak","nie","moze"),"nie");
+    private Object QuestionBasic;
+    public QuestionBasic[] quiz1;
+    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    //ListView quizList = findViewById(R.id.list);
+    public String tempQuizName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
+
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("quizzes").document("testquiz");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        CollectionReference docRef = db.collection("quizzes");
+
+        docRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        myJson = document.getString("question");
-                    } else {
-                        Log.d(TAG, "No such document");
+                    for(QueryDocumentSnapshot document : task.getResult()) {
+                        adapter.add(document.getId());
+                        adapter.notifyDataSetChanged();
                     }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
                 }
             }
         });
-    }
+        setListAdapter(adapter);
+        /*Gson gson = new Gson();
+        Map<String, com.example.quizapp.QuestionBasic> city = new HashMap<>();
+        city.put("question1", question1);
+        city.put("question2", question2);
+        city.put("question3", question3);
+        //city.put((com.example.quizapp.QuestionBasic) QuestionBasic, question2);
 
-    public void sendQuestionArray(View view){
-        Intent intent = new Intent(this, QuestionBasicActivity.class);
-        //Gson gson = new Gson();
-        //String myJson = gson.toJson(question);
-        //Map<String, Object> city = new HashMap<>();
-        //city.put("question", myJson);
-            
 
-        /*db.collection("quizzes").document("testquiz")
-                .set(city)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("quizzes").document("Quiz1")
+                .set(city);
+                /*.addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
@@ -79,11 +76,17 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "Error writing document", e);
                     }
                 });*/
+    }
+
+
+    public void loadQuizList(View view){
+        /*Intent intent = new Intent(this, QuestionBasicActivity.class);
         int counter = 0;
         int score = 0;
         intent.putExtra("myjson", myJson);
         intent.putExtra("counter", counter);
-        startActivity(intent);
+        startActivity(intent);*/
+
     }
 
 }

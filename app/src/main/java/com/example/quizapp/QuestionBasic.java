@@ -7,24 +7,19 @@ import java.util.List;
 public class QuestionBasic {
     private String question;
     //private String answer_a, answer_b, answer_c, answer_d;
-    //private String[] answers;
-    private Answer[] answers;
-    //private String answer_correct;
-    private int counter;
+    private List<String> answers;
+    //private Answer[] answers;
+    private String answer_correct;
 
-    public QuestionBasic(String question, Answer[] answers) {
+    public QuestionBasic(String question, List<String> answers, String answer_correct) {
         this.question = question;
         this.answers = answers;
-        //this.answer_correct = answer_correct;
-        this.counter = answers.length;
+        this.answer_correct = answer_correct;
 
     }
 
     public void shuffle(){
-        List<Answer> list = Arrays.asList(answers);
-
-        Collections.shuffle(list);
-        list.toArray(answers);
+        Collections.shuffle(answers);
     }
 
     /*public boolean checkAnswer(String answer_chosen){
@@ -39,19 +34,20 @@ public class QuestionBasic {
         this.question = question;
     }
 
-    public Answer[] getAnswers() {
+    public List<String> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(Answer[] answers) {
+    public void setAnswers(List<String> answers) {
         this.answers = answers;
     }
 
-    public int getCounter() {
-        return counter;
+
+    public String getAnswer_correct() {
+        return answer_correct;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
+    public void setAnswer_correct(String answer_correct) {
+        this.answer_correct = answer_correct;
     }
 }
