@@ -31,7 +31,7 @@ public class QuizListViewModel extends ViewModel {
     }
     private void loadQuizzes() {
         // Do an asynchronous operation to fetch users.
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        /*FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("quizzes").document("testquiz");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -48,7 +48,6 @@ public class QuizListViewModel extends ViewModel {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
-        });
+        });*/
     }
-
 }

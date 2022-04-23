@@ -13,25 +13,18 @@ public class QuestionBasic {
     }
 
     public String question;
-    //private String answer_a, answer_b, answer_c, answer_d;
     public List<String> answers;
-    //private Answer[] answers;
     public String answer_correct;
 
     public QuestionBasic(String question, List<String> answers, String answer_correct) {
         this.question = question;
         this.answers = answers;
         this.answer_correct = answer_correct;
-
     }
 
     public void shuffle(){
         Collections.shuffle(answers);
     }
-
-    /*public boolean checkAnswer(String answer_chosen){
-        return answer_chosen.equals(answer_correct);
-    }*/
 
     public String getQuestion() {
         return question;

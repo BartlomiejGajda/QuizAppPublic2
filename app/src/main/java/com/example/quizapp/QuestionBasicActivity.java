@@ -25,21 +25,15 @@ public class QuestionBasicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question_basic);
         gson = new Gson();
         questions = gson.fromJson(getIntent().getStringExtra("myjson"), QuestionBasic[].class);
-
-        counter = 0;//getIntent().getIntExtra("counter",0);
-
+        counter = getIntent().getIntExtra("counter",0);
         question = questions[counter];
         //question.shuffle(); //mieszamy kolejność odpowiedzi
 
         TextView textView = findViewById(R.id.textViewQuestion);
 
-
         int a1 = 0;
 
-
-        Button button1 = findViewById(a1);
-
-
+        Button button1 = findViewById(R.id.a1);
         Button button2 = findViewById(R.id.a2);
         Button button3 = findViewById(R.id.a3);
         Button button4 = findViewById(R.id.a4);
@@ -78,10 +72,6 @@ public class QuestionBasicActivity extends AppCompatActivity {
         //if(null!=layout) //for safety only  as you are doing onClick
         //    layout.removeView(button1);
         textView.setText(question.getQuestion());
-
-
-
-
     }
 
     public void setButton(Button b, Boolean isCorrect){
@@ -92,7 +82,6 @@ public class QuestionBasicActivity extends AppCompatActivity {
             b.setBackgroundColor(Color.RED);
             b.setTextColor(Color.WHITE);
         }
-
     }
 
     @SuppressLint("SetTextI18n")
