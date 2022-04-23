@@ -26,10 +26,10 @@ public class QuestionBasicActivity extends AppCompatActivity {
         gson = new Gson();
         questions = gson.fromJson(getIntent().getStringExtra("myjson"), QuestionBasic[].class);
 
-        counter = getIntent().getIntExtra("counter",0);
+        counter = 0;//getIntent().getIntExtra("counter",0);
 
         question = questions[counter];
-        question.shuffle(); //mieszamy kolejność odpowiedzi
+        //question.shuffle(); //mieszamy kolejność odpowiedzi
 
         TextView textView = findViewById(R.id.textViewQuestion);
 

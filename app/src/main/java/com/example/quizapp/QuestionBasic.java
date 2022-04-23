@@ -1,15 +1,22 @@
 package com.example.quizapp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class QuestionBasic {
-    private String question;
+    public QuestionBasic() {
+        this.question ="";
+        this.answers= new ArrayList<>();
+        this.answer_correct="";
+    }
+
+    public String question;
     //private String answer_a, answer_b, answer_c, answer_d;
-    private List<String> answers;
+    public List<String> answers;
     //private Answer[] answers;
-    private String answer_correct;
+    public String answer_correct;
 
     public QuestionBasic(String question, List<String> answers, String answer_correct) {
         this.question = question;
@@ -41,7 +48,6 @@ public class QuestionBasic {
     public void setAnswers(List<String> answers) {
         this.answers = answers;
     }
-
 
     public String getAnswer_correct() {
         return answer_correct;
