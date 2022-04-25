@@ -2,6 +2,7 @@ package com.example.quizapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,31 +29,28 @@ public class AfterQuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_question, container, false);
+        return inflater.inflate(R.layout.fragment_after_question, container, false);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String score = requireArguments().getString("score");
-        String counter = requireArguments().getString("counter");
+        int score = requireArguments().getInt("score");
+        int counter = requireArguments().getInt("counter");
         TextView scoreCounterTextView = (TextView) getView().findViewById(R.id.scoreCounterTextView);
         try{
             scoreCounterTextView.setText("Wynik: "+ score +"/"+ counter);}
         catch (Exception ignored){}
         Button returnButton = getView().findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                getActivity().finish();
+            }
+        });
 
     }
-    /*public interface OnDataPass {
-        public void onDataPass(int score);
-    }
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        dataPasser = (OnDataPass) context;
-    }
-    public void passData(int data) {
-        dataPasser.onDataPass(data);
-    }*/
 }

@@ -8,16 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -91,10 +84,9 @@ public class MainActivity extends ListActivity {
         super.onListItemClick(l, v, pos, id);
         String values=((TextView)v).getText().toString();
         CollectionReference questionsRef = db.collection("topics").document(values).collection("questions");
-        Intent intent = new Intent(this, QuestionBasicActivity.class);
+        Intent intent = new Intent(this, QuestionActivity.class);
         questionsRef.get().addOnCompleteListener(task -> {
             for(QueryDocumentSnapshot document : task.getResult()) {
-                ((TextView) v).setText(document.getId());
                 QuestionBasic questionBasic = document.toObject(QuestionBasic.class);
                 listQuestions.add(questionBasic);
             }
