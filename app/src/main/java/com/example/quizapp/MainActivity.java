@@ -9,6 +9,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +34,6 @@ public class MainActivity extends ListActivity {
     ArrayList<String> listItems=new ArrayList<String>();
     ArrayAdapter<String> adapter;
     ArrayList<QuestionBasic> listQuestions=new ArrayList<QuestionBasic>();
-
 
 
     @Override
@@ -103,8 +104,6 @@ public class MainActivity extends ListActivity {
             intent.putExtra("myjson", myJson);
             intent.putExtra("counter", 0);
             startActivity(intent);
-
         });
-
     }
 }
